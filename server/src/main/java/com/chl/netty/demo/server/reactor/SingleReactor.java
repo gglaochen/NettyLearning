@@ -1,6 +1,6 @@
-package com.chl.netty.test.client.reactor;
+package com.chl.netty.demo.server.reactor;
 
-import com.chl.netty.test.client.reactor.handler.SingleReactorHandler;
+import com.chl.netty.demo.server.reactor.handler.SingleReactorHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -18,7 +18,7 @@ public class SingleReactor implements Runnable {
     Selector selector;
     ServerSocketChannel serverSocket;
 
-    SingleReactor() throws IOException {
+    public SingleReactor() throws IOException {
         //...获取选择器、开启 serverSocket 服务监听通道
         this.selector = Selector.open();
         this.serverSocket = ServerSocketChannel.open();
@@ -30,7 +30,9 @@ public class SingleReactor implements Runnable {
         sk.attach(new AcceptorHandler());
     }
 
-    //轮询和分发事件
+    /**
+     * 轮询和分发事件
+     */
     @Override
     public void run() {
         try {

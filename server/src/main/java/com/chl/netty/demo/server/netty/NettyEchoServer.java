@@ -1,6 +1,6 @@
-package com.chl.netty.demo.server;
+package com.chl.netty.demo.server.netty;
 
-import com.chl.netty.demo.server.handler.NettyEchoServerHandler;
+import com.chl.netty.demo.server.netty.handler.NettyEchoServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelFuture;
@@ -20,7 +20,7 @@ public class NettyEchoServer {
     ServerBootstrap b = new ServerBootstrap();
     private final int serverPort;
 
-    NettyEchoServer(int serverPort) {
+    public NettyEchoServer(int serverPort) {
         this.serverPort = serverPort;
     }
 

@@ -1,4 +1,4 @@
-package com.chl.netty.test.client;
+package com.chl.netty.test.client.netty;
 
 import com.chl.netty.test.client.netty.handler.NettyEchoClientHandler;
 import io.netty.bootstrap.Bootstrap;

@@ -1,6 +1,6 @@
-package com.chl.netty.test.client.netty;
+package com.chl.netty.test.client;
 
-import com.chl.netty.test.client.NettyEchoClient;
+import com.chl.netty.test.client.netty.NettyEchoClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
