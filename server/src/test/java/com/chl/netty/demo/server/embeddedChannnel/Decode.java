@@ -74,7 +74,7 @@ public class Decode extends ServerApplicationTests {
              长度字段的偏移量矫正：在传输协议比较复杂的情况下，例如包含了长度字段、协议版本号、魔数等等，那么，解码就需要进行长度矫正：矫正值的计算公式为：内容字段偏移量-长度字段偏移量-长度字段的字节数
              丢弃的起始字节数：一些起辅助作用的字段，最终结果不需要，比如前面的长度字段
              **/
-            final LengthFieldBasedFrameDecoder spliter = new LengthFieldBasedFrameDecoder(1024, 0, 4, 0, 4);
+            final LengthFieldBasedFrameDecoder spliter = new LengthFieldBasedFrameDecoder(1024, 0, 4, 2, 6);
             ChannelInitializer i = new ChannelInitializer<EmbeddedChannel>() {
                 protected void initChannel(EmbeddedChannel ch) {
                     ch.pipeline().addLast(spliter);
@@ -87,7 +87,8 @@ public class Decode extends ServerApplicationTests {
                 ByteBuf buf = Unpooled.buffer();
                 String s = j + "次发送";
                 byte[] bytes = s.getBytes(StandardCharsets.UTF_8);
-                buf.writeInt(bytes.length);
+                buf.writeInt(bytes.length);//如果还包含协议号等等，buf.writeType()后LengthFieldBasedFrameDecoder的长度字段的偏移量矫正修改为大于type对应的字节数，丢弃的起始字节数也要加上
+                buf.writeChar('d');
                 buf.writeBytes(bytes);
                 channel.writeInbound(buf);
             }
