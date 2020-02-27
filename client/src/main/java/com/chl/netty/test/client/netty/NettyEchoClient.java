@@ -52,8 +52,8 @@ public class NettyEchoClient {
             //阻塞，直到连接成功
             f.sync();
             Channel channel = f.channel();
-            Scanner scanner = new Scanner(System.in);
             System.out.println("请输入内容");
+            Scanner scanner = new Scanner(System.in);
             while (scanner.hasNext()) {
                 String next = scanner.next();
                 byte[] bytes = (LocalDateTime.now() + ">>" + next).getBytes(StandardCharsets.UTF_8);
