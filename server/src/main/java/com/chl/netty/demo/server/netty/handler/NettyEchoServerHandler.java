@@ -18,7 +18,7 @@ public class NettyEchoServerHandler extends ChannelInboundHandlerAdapter {
     public static final NettyEchoServerHandler INSTANCE = new NettyEchoServerHandler();
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf in = (ByteBuf) msg;
         //Netty4.1开始，ByteBuf的默认类型是直接内存缓冲区
         log.info("缓冲区类型:{}", in.hasArray() ? "堆缓冲区" : "直接缓冲区");
@@ -30,8 +30,6 @@ public class NettyEchoServerHandler extends ChannelInboundHandlerAdapter {
         log.info("写回前，引用计数：{}", ((ByteBuf) msg).refCnt());
         //写回数据，异步任务
         ChannelFuture f = ctx.writeAndFlush(msg);
-        f.addListener((ChannelFuture futureListener) -> {
-            log.info("写回后，引用计数:{}", ((ByteBuf) msg).refCnt());
-        });
+        f.addListener((ChannelFuture futureListener) -> log.info("写回后，引用计数:{}", ((ByteBuf) msg).refCnt()));
     }
 }
