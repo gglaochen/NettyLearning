@@ -1,6 +1,6 @@
 package com.chl.netty.test.client;
 
-import com.chl.netty.test.client.handler.NettyEchoClientHandler;
+import com.chl.netty.test.client.netty.handler.NettyEchoClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;

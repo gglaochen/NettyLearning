@@ -1,4 +1,4 @@
-package com.chl.netty.test.client.handler;
+package com.chl.netty.test.client.netty.handler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
