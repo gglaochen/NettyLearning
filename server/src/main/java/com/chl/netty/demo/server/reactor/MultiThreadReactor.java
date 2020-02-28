@@ -1,6 +1,7 @@
 package com.chl.netty.demo.server.reactor;
 
 import com.chl.netty.demo.server.reactor.handler.MultiThreadEchoHandler;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -14,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * @author ChenHanLin 2020/2/27
  */
+@Slf4j
 public class MultiThreadReactor {
 
     ServerSocketChannel serverSocket;
